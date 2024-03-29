@@ -78,7 +78,7 @@ public class ValidOrderTest {
 
 
     @Test
-    public void CreateValidOrderByBigButton() {
+    public void createValidOrderByBigButton() {
         WebDriver driver = driverRule.getDriver();
 
         MainPage mainPage = new MainPage(driver);
