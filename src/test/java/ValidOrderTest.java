@@ -47,7 +47,7 @@ public class ValidOrderTest {
         };
     }
     @Test
-    public void CreateValidOrderByButtonInHeader() {
+    public void createValidOrderByButtonInHeader() {
         WebDriver driver = driverRule.getDriver();
 
         MainPage mainPage = new MainPage(driver);
