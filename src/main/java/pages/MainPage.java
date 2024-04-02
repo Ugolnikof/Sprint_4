@@ -19,6 +19,15 @@ public class MainPage {
     // локатор большой кнопки "Заказать" внизу страницы
     private final By bigButton = By.xpath(".//div[contains(@class,'Home_FinishButton')]/button[contains(@class,'Button_Button')]");
 
+    // локатор кнопки "Go"
+    private final By goButton = By.cssSelector("[class*=Header_Button]");
+
+    // локатор поля ввода номера заказа
+    private final By headerInputOrderNumber = By.cssSelector("[class*=Header_Input]");
+
+    // локатор кнопки "Статус заказа"
+    private final By orderStatusButton = By.cssSelector("[class*=Header_Link]");
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -62,5 +71,26 @@ public class MainPage {
         driver.findElement(bigButton).click();
 
         return new UserInformation(driver);
+    }
+
+    public StatusPage clickOnGo() {
+        driver.findElement(goButton).click();
+
+        return new StatusPage(driver);
+    }
+
+    public MainPage enterOrderNumber(String orderNumber) {
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
+                .until(ExpectedConditions.visibilityOfElementLocated(headerInputOrderNumber));
+
+        driver.findElement(headerInputOrderNumber).sendKeys(orderNumber);
+
+        return this;
+    }
+
+    public MainPage clickOnStatusButton() {
+        driver.findElement(orderStatusButton).click();
+
+        return this;
     }
 }
