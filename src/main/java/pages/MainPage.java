@@ -28,6 +28,12 @@ public class MainPage {
     // локатор кнопки "Статус заказа"
     private final By orderStatusButton = By.cssSelector("[class*=Header_Link]");
 
+    // локатор хэдера страницы
+    private final By pageHeader = By.xpath(".//div[contains(@class,'Home_Header')]");
+
+    // локатор лого "Самокат" в хэдере
+    private final By samokatLogo = By.xpath(".//a[contains(@class,'Header_LogoScooter')]");
+
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -93,4 +99,17 @@ public class MainPage {
 
         return this;
     }
+
+    public void checkRedirectToSamokat() {
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
+                .until(ExpectedConditions.visibilityOfElementLocated(pageHeader));
+
+    }
+
+    public MainPage clickOnSamokat() {
+        driver.findElement(samokatLogo).click();
+
+        return this;
+    }
+
 }
