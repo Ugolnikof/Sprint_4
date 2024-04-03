@@ -8,7 +8,7 @@ import org.openqa.selenium.*;
 import java.time.Duration;
 
 public class MainPage {
-    private static WebDriver driver;
+    private final WebDriver driver;
 
     // локатор блока "Вопросы о важном"
     private final By questions = By.cssSelector("[class='accordion']");
@@ -110,6 +110,12 @@ public class MainPage {
         driver.findElement(samokatLogo).click();
 
         return this;
+    }
+
+    public YandexPage clickOnYandex() {
+        driver.findElement(By.xpath(".//a[contains(@class,'Header_LogoYandex')]")).click();
+
+        return new YandexPage(driver);
     }
 
 }
