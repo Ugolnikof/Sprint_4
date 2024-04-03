@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class StatusPage {
-    private static WebDriver driver;
+    private final WebDriver driver;
 
     // локатор картинки с текстом "Заказ не найден"
     private final By notFoundImg = By.cssSelector("[alt='Not found']");
